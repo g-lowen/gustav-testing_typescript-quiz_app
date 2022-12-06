@@ -1,0 +1,133 @@
+.app {
+  background-image: url("/img/quiz-around-the-clock.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.first-container {
+  align-items: center;
+  /* background-color: var(--mainLightPink); */
+  display: flex;
+  justify-content: center;
+}
+
+.first-container h1 {
+  align-items: center;
+  display: flex;
+}
+
+.second-container {
+  align-items: center;
+  /* background-color: var(--mainLightBlue); */
+  display: flex;
+  justify-content: center;
+}
+
+.first {
+  background-color: var(--mainLightPink);
+}
+
+.second {
+  background-color: var(--mainLightBlue);
+}
+.loader {
+  animation: spinx 30s linear infinite;
+  background: linear-gradient(
+      var(--mainLightBlue) calc(1 * 30px),
+      transparent 0
+    )
+    no-repeat;
+  background-position: 50% 0px;
+  background-size: calc(1 * 2px) calc(1 * 40px);
+  border-bottom: calc(1 * 5px) solid black;
+  border-top: calc(1 * 5px) solid black;
+  box-sizing: border-box;
+  display: inline-block;
+  height: calc(1 * 80px);
+  position: relative;
+  width: calc(1 * 50px);
+}
+.loader:before,
+.loader:after {
+  animation: lqt 30s linear infinite;
+  background: rgba(1, 1, 1, 0.2);
+  background-position: 0 0px;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  border-radius: 0 0 calc(1 * 20px) calc(1 * 20px);
+  content: "";
+  height: calc(1 * 35px);
+  left: 50%;
+  position: absolute;
+  top: 0;
+  transform: translatex(-50%);
+  width: calc(1 * 40px);
+}
+.loader:after {
+  animation: lqb 30s linear infinite;
+  border-radius: calc(1 * 20px) calc(1 * 20px) 0 0;
+  bottom: 0;
+  top: auto;
+}
+
+@keyframes lqt {
+  0%,
+  100% {
+    background-image: linear-gradient(
+      var(--mainLightBlue) calc(1 * 40px),
+      transparent 0
+    );
+    background-position: 0% 0px;
+  }
+  50% {
+    background-image: linear-gradient(
+      var(--mainLightBlue) calc(1 * 40px),
+      transparent 0
+    );
+    background-position: 0% calc(1 * 40px);
+  }
+  50.1% {
+    background-image: linear-gradient(
+      var(--mainLightBlue) calc(1 * 40px),
+      transparent 0
+    );
+    background-position: 0% calc(1 * -40px);
+  }
+}
+@keyframes lqb {
+  0% {
+    background-image: linear-gradient(
+      var(--mainLightBlue) calc(1 * 40px),
+      transparent 0
+    );
+    background-position: 0 calc(1 * 40px);
+  }
+  100% {
+    background-image: linear-gradient(
+      var(--mainLightBlue) calc(1 * 40px),
+      transparent 0
+    );
+    background-position: 0 calc(1 * -40px);
+  }
+}
+@keyframes spinx {
+  0%,
+  49% {
+    background-position: 50% 36px;
+    transform: rotate(0deg);
+  }
+  51%,
+  98% {
+    background-position: 50% 4px;
+    transform: rotate(180deg);
+  }
+  100% {
+    background-position: 50% 36px;
+    transform: rotate(360deg);
+  }
+}
