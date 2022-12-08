@@ -1,41 +1,27 @@
+import React, { useState } from "react"
+import { Routes, Route } from "react-router-dom"
+
 import "./App.css"
-import { useState } from "react"
 import Home from "./pages/Home"
+import QuestionCard from "./pages/QuestionCard"
 
-function App() {
-  const [test, setTest] = useState(true)
+const App: React.FC = () => {
+  const [playerName, setPlayerName] = useState<string>()
 
-  function clickHandler(e: React.FormEvent<HTMLInputElement>) {
-    console.log(typeof e.currentTarget.value)
+  const nameHandler = (text: string) => {
+    console.log(text)
 
-    setTest(e.currentTarget.value)
+    setPlayerName(text)
   }
   return (
-    <section>
-      {test ? (
-        <section className="app">
-          <section className="first-container">
-            <h1>
-              Quiz <span className="loader"></span> Time
-            </h1>
-          </section>
-          <section className="second-container">
-            <Home />
-            <button onClick={clickHandler} value={false}>
-              Click
-            </button>
-          </section>
-        </section>
-      ) : (
-        <section className="app">
-          <section className="first"></section>
-          <section className="second">
-            <button onClick={clickHandler} value={true}>
-              Click
-            </button>
-          </section>
-        </section>
-      )}
+    <section className="app">
+      <Routes>
+        <Route path="/" element={<Home addPlayerName={nameHandler} />}></Route>
+        <Route
+          path="/quiz"
+          element={<QuestionCard playerName={playerName} />}
+        ></Route>
+      </Routes>
     </section>
   )
 }
